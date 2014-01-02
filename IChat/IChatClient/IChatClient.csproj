@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{155D0DD9-7C28-47EE-9DA4-318D3AA1E4F7}</ProjectGuid>
+    <ProjectGuid>{6B3291F2-3F2C-4A5D-9D2A-3E54D5CA35A7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IChatService</RootNamespace>
-    <AssemblyName>IChatService</AssemblyName>
+    <RootNamespace>IChatClient</RootNamespace>
+    <AssemblyName>IChatClient</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace IChatService
+namespace IChatClient
 {
     static class Program
     {
@@ -15,7 +15,7 @@ namespace IChatService
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new IChatService());
+            Application.Run(new Form1());
         }
     }
 }

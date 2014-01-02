@@ -1,0 +1,9 @@
+D:\sjq\IChat\IChat\IChatService\bin\Debug\IChatService.exe
+D:\sjq\IChat\IChat\IChatService\bin\Debug\IChatService.pdb
+D:\sjq\IChat\IChat\IChatService\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\sjq\IChat\IChat\IChatService\obj\x86\Debug\IChatService.IChatService.resources
+D:\sjq\IChat\IChat\IChatService\obj\x86\Debug\IChatService.Properties.Resources.resources
+D:\sjq\IChat\IChat\IChatService\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\sjq\IChat\IChat\IChatService\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\sjq\IChat\IChat\IChatService\obj\x86\Debug\IChatService.exe
+D:\sjq\IChat\IChat\IChatService\obj\x86\Debug\IChatService.pdb
