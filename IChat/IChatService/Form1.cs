@@ -70,11 +70,13 @@ namespace IChatService
                 {
                     byte[] buffer = new byte[1024 * 1024];
                     int n = client.Receive(buffer);
-                    SetMessage(Encoding.UTF8.GetString(buffer, 0, n));
+                    SetMessage(string.Format("{0}:{1}", client.RemoteEndPoint, Encoding.UTF8.GetString(buffer, 0, n)));
                 }
                 catch (Exception ex)
                 {
                     SetMessage(ex.Message);
+                    ClientList.Remove(client.RemoteEndPoint.ToString());
+                    ClientListcomboBox.Items.Remove(client.RemoteEndPoint.ToString());
                     break;
                 }
             }
@@ -87,9 +89,59 @@ namespace IChatService
 
         private void SendContentbutton_Click(object sender, EventArgs e)
         {
-            SetMessage(ContenttextBox.Text);
-            byte[] buffer = Encoding.UTF8.GetBytes(ContenttextBox.Text);
-            ClientList[ClientListcomboBox.Items[0].ToString()].Send(buffer);
+            try
+            {
+                byte[] buffer = Encoding.UTF8.GetBytes(ContenttextBox.Text);
+                ClientList[ClientListcomboBox.Text].Send(buffer);
+                SetMessage(string.Format("{0}:{1}", ClientList[ClientListcomboBox.Text].LocalEndPoint, ContenttextBox.Text));
+
+            }
+            catch (Exception ex)
+            {
+                SetMessage(ex.Message);
+            }
+            finally
+            {
+                ContenttextBox.Text = "";
+            }
+        }
+
+        private void ClearContentbutton_Click(object sender, EventArgs e)
+        {
+            ContenttextBox.Text = "";
+        }
+
+        private void ContenttextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control == true)
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    try
+                    {
+
+                        byte[] buffer = Encoding.UTF8.GetBytes(ContenttextBox.Text);
+                        ClientList[ClientListcomboBox.Text].Send(buffer);
+                        SetMessage(string.Format("{0}:{1}", ClientList[ClientListcomboBox.Text].LocalEndPoint, ContenttextBox.Text));
+                    }
+                    catch (Exception ex)
+                    {
+                        SetMessage(ex.Message);
+                    }
+                    finally
+                    {
+                        ContenttextBox.Text = "";
+                    }
+                }
+            }
+        }
+
+        private void ContenttextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\n')
+            {
+                e.Handled = true;
+            }
         }
     }
 }

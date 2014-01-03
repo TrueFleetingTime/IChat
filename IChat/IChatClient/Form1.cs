@@ -49,9 +49,17 @@ namespace IChatClient
         {
             while (true)
             {
-                byte[] buffer = new byte[1024 * 1024];
-                int n = socket.Receive(buffer);
-                SetMessage(Encoding.UTF8.GetString(buffer, 0, n));
+                try
+                {
+                    byte[] buffer = new byte[1024 * 1024];
+                    int n = socket.Receive(buffer);
+                    SetMessage(string.Format("{0}:{1}", socket.RemoteEndPoint, Encoding.UTF8.GetString(buffer, 0, n)));
+                }
+                catch (Exception ex)
+                {
+                    SetMessage(ex.Message);
+                    break;
+                }
             }
         }
         void SetMessage(string message)
@@ -61,9 +69,60 @@ namespace IChatClient
 
         private void SendContentbutton_Click(object sender, EventArgs e)
         {
-            SetMessage(ContenttextBox.Text);
-            byte[] buffer = Encoding.UTF8.GetBytes(ContenttextBox.Text);
-            socket.Send(buffer);
+
+            try
+            {
+
+                byte[] buffer = Encoding.UTF8.GetBytes(ContenttextBox.Text);
+                socket.Send(buffer);
+                SetMessage(string.Format("{0}:{1}", socket.LocalEndPoint, ContenttextBox.Text));
+            }
+            catch (Exception ex)
+            {
+                SetMessage(ex.Message);
+            }
+            finally
+            {
+                ContenttextBox.Text = "";
+            }
+        }
+
+        private void ClearContentbutton_Click(object sender, EventArgs e)
+        {
+            ContenttextBox.Text = "";
+        }
+
+        private void ContenttextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control == true)
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    try
+                    {
+
+                        byte[] buffer = Encoding.UTF8.GetBytes(ContenttextBox.Text);
+                        socket.Send(buffer);
+                        SetMessage(string.Format("{0}:{1}", socket.LocalEndPoint, ContenttextBox.Text));
+                    }
+                    catch (Exception ex)
+                    {
+                        SetMessage(ex.Message);
+                    }
+                    finally
+                    {
+                        ContenttextBox.Text = "";
+                    }
+                }
+            }
+        }
+
+        private void ContenttextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\n')
+            {
+                e.Handled = true;
+            }
         }
     }
 }

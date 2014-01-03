@@ -85,15 +85,18 @@
             // 
             // ClearContentbutton
             // 
+            this.ClearContentbutton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ClearContentbutton.Location = new System.Drawing.Point(366, 467);
             this.ClearContentbutton.Name = "ClearContentbutton";
             this.ClearContentbutton.Size = new System.Drawing.Size(75, 23);
             this.ClearContentbutton.TabIndex = 20;
             this.ClearContentbutton.Text = "Clear";
             this.ClearContentbutton.UseVisualStyleBackColor = true;
+            this.ClearContentbutton.Click += new System.EventHandler(this.ClearContentbutton_Click);
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(7, 356);
             this.label5.Name = "label5";
@@ -103,6 +106,7 @@
             // 
             // SendContentbutton
             // 
+            this.SendContentbutton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.SendContentbutton.Location = new System.Drawing.Point(447, 467);
             this.SendContentbutton.Name = "SendContentbutton";
             this.SendContentbutton.Size = new System.Drawing.Size(75, 23);
@@ -113,11 +117,15 @@
             // 
             // ContenttextBox
             // 
+            this.ContenttextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.ContenttextBox.Location = new System.Drawing.Point(7, 371);
             this.ContenttextBox.Multiline = true;
             this.ContenttextBox.Name = "ContenttextBox";
             this.ContenttextBox.Size = new System.Drawing.Size(515, 95);
             this.ContenttextBox.TabIndex = 17;
+            this.ContenttextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ContenttextBox_KeyDown);
+            this.ContenttextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ContenttextBox_KeyPress);
             // 
             // label4
             // 
@@ -130,6 +138,9 @@
             // 
             // MessagetextBox
             // 
+            this.MessagetextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.MessagetextBox.Location = new System.Drawing.Point(7, 59);
             this.MessagetextBox.Multiline = true;
             this.MessagetextBox.Name = "MessagetextBox";
